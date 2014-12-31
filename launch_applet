@@ -1,0 +1,1 @@
+java -Djava.library.path=/home/tomas/processing-1.5.1/modes/java/libraries/opengl/library/linux32/ -cp .:core.jar:opengl.jar:/home/tomas/processing-1.5.1/modes/java/libraries/opengl/library/jogl.jar:/home/tomas/processing-1.5.1/modes/java/libraries/opengl/library/gluegen-rt.jar:protennis.jar protennis
