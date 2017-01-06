@@ -47,7 +47,7 @@ void setup() {
   trajectoryPoints.add(new PVector(132, 0, 532));
   trajectoryPoints.add(new PVector(136, -20, 496));
   trajectoryPoints.add(new PVector(216, 0, 213));
-  
+
   trajectory = new Trajectory(trajectoryPoints);
   axis = new Axis(100.0);
 }
@@ -98,17 +98,17 @@ void cameraControl() {
   cameraY = height/2.0;
   fov = PI/kfov;
   aspect = k*float(width)/float(height);
-  cameraZ = (height/2.0) / tan(fov / 2.0); 
-  perspective(fov, aspect, cameraZ/10.0, cameraZ*10.0); 
+  cameraZ = (height/2.0) / tan(fov / 2.0);
+  perspective(fov, aspect, cameraZ/10.0, cameraZ*10.0);
 
-  camera(eye.x, eye.y, eye.z, 
-         center.x, center.y, center.x, 
+  camera(eye.x, eye.y, eye.z,
+         center.x, center.y, center.x,
          0.0, 1.0, 0.0); // upX, upY, upZ
 }
 
 void mouseControl() {
 
-  if (allowMouse) {       
+  if (allowMouse) {
     rotateY((-mouseX+(width/2.0))*0.001);
     rotateX((mouseY-(height/2.0))*0.00075);
     animate = false;
@@ -117,12 +117,12 @@ void mouseControl() {
       //println("kfov:"+kfov);
       if (mouseButton == LEFT && kfov < 25) {
         kfov += 0.1;
-      } 
+      }
       else if (mouseButton == RIGHT && kfov > 1.3) {
         kfov -= 0.1;
       }
     }
-  } 
+  }
   else if (animate) {
     newTime = millis();
     rotateY(newTime*(width/2.0)*0.001*0.0001);
@@ -178,4 +178,3 @@ void keyPressed() {
     }
   }
 }
-

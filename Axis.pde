@@ -17,7 +17,7 @@ class Axis {
   void printAxis(PVector pvec) {
     println("x:"+pvec.x+"|y:"+pvec.y+"|z:"+pvec.z);
   }
-  
+
   void draw() {
 
     stroke(0);
@@ -28,11 +28,11 @@ class Axis {
     drawAxis(z_, red);
   }
 
-  void drawAxis(PVector axisPoint, color c) {  
+  void drawAxis(PVector axisPoint, color c) {
     strokeWeight(1);
     stroke(c);
-    line(center_.x, center_.y, center_.z, 
-    center_.x+axisPoint.x, center_.y+axisPoint.y, 
+    line(center_.x, center_.y, center_.z,
+    center_.x+axisPoint.x, center_.y+axisPoint.y,
     center_.z+axisPoint.z);
 
     pushMatrix();
@@ -49,4 +49,3 @@ class Axis {
     popMatrix();
   }
 }
-
