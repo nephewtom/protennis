@@ -10,12 +10,12 @@ PVector eye = new PVector(0.0, 0.0, 0.0);
 PVector center = new PVector(0.0, 0.0, 0.0);
 
 // Default camera positions
-PVector defaultEye = new PVector(1.0, -350.0, -450.0);
-PVector eyeLeft = new PVector(200.0, -100.0, -400.0);
-PVector eyeCenter = new PVector(0.0, -100.0, -400.0);
-PVector eyeRight = new PVector(-200.0, -100.0, -400.0);
-PVector eyeMiddleLeft = new PVector(500.0, -200.0, -75.0);
-PVector eyeMiddleRight = new PVector(-500.0, -200.0, -75.0);
+PVector defaultEye = new PVector(1.0, -350.0, 450.0);
+PVector eyeLeft = new PVector(200.0, -100.0, 400.0);
+PVector eyeCenter = new PVector(0.0, -100.0, 400.0);
+PVector eyeRight = new PVector(-200.0, -100.0, 400.0);
+PVector eyeMiddleLeft = new PVector(500.0, -200.0, 75.0);
+PVector eyeMiddleRight = new PVector(-500.0, -200.0, 75.0);
 PVector eyeTop = new PVector(0.0, -600.0, -1.0);
 
 PVector courtCenter = new PVector(0.0, 0.0, 0.0);
@@ -35,10 +35,10 @@ Trajectory trajectory;
 void setup() {
   size(800, 600, OPENGL);
   fill(204);
-  eye = defaultEye;
+  eye = eyeLeft;
   center = courtCenter;
   smooth();
-  
+
   trajectoryPoints.add(new PVector(134, -35, 157));
   trajectoryPoints.add(new PVector(178, 0, 462));
   trajectoryPoints.add(new PVector(216, -20, 607));
@@ -66,11 +66,6 @@ void draw() {
   cameraControl();
   mouseControl();
 
-  if (drawAxis) {
-    // When drawing axis, Processing crashes...
-    //axis.draw();
-  }
-      
   pushMatrix();
 
   court.draw();
@@ -80,17 +75,28 @@ void draw() {
   //trajectory.draw();
 
   printHelp();
+  if (drawAxis) {
+    // When drawing axis, Processing crashes...
+    //axis.draw();
+    text("(0, 0, 0)", 0, 0, 0);
+    text("(100, 0, 0)", 100, 0, 0);
+    text("(0, -100, 0)", 0, -100, 0);
+    text("(0, 0, 100)", 0, 0, 100);
+  }
   popMatrix();
 }
 
 void printHelp() {
-  text("a : animate", 300, -110, 384);  
-  text("t : trajectory", 300, -90, 384);
-  text("0-6 : views", 300, -70, 384);
+  text("- Controls -", 280, -170, 384);
+  text("0-6 : fixed views", 270, -150, 384);
+  text("SPACE : toggle mouse", 270, -130, 384);
+  text("a : toggle animate view", 270, -110, 384);
+  text("t : ball trajectory", 270, -90, 384);
+  text("ESC : exit", 270, -70, 384);
 }
 
 float kfov = 3.0;
-float fov, aspect; 
+float fov, aspect;
 float cameraZ, cameraY;
 float k = 1.0;
 
